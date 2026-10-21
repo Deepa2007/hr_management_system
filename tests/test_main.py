@@ -1,4 +1,3 @@
-
 """Automated tests for the HR Management System API."""
 
 import pytest

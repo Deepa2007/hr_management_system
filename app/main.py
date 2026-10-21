@@ -1,4 +1,3 @@
-
 """REST API for the HR Management System."""
 
 from fastapi import FastAPI, HTTPException, status
@@ -34,10 +33,7 @@ def health_check():
 @app.post("/employees", response_model=Employee, status_code=status.HTTP_201_CREATED)
 def create_employee(employee_data: EmployeeCreate):
     """Create an employee if the email is not already registered."""
-    if any(
-        employee.email == employee_data.email
-        for employee in employees.values()
-    ):
+    if any(employee.email == employee_data.email for employee in employees.values()):
         raise HTTPException(
             status_code=409,
             detail="An employee with this email already exists",
